@@ -1,6 +1,7 @@
 package view;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import model.LichSu;
@@ -33,6 +34,7 @@ public class SampleController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 	    oList = FXCollections.observableList(LuuTru.getTrieuDai());
+	    oList.addAll(LuuTru.getVua());
 	    filterData = new FilteredList<>(oList, s -> true);
 		hienthi.setItems(filterData);
 		textfield.textProperty().addListener(obs -> {

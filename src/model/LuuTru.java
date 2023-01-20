@@ -21,38 +21,31 @@ public class LuuTru {
 	public static String sukien = "data//sukien.json";
 	public static String ditich = "data//ditich.json";
 	public static String lehoi = "data//lehoi.json";
+	public static String vua = "data//vua.json";
 
-	public static List<LichSu> getData(String path) {
-		// TODO Auto-generated method stub
-		List<LichSu> listTrieuDai = new ArrayList<>();
-	    TrieuDai td;
-	    Gson gson = new Gson();
-		try {
-			FileReader fr = new FileReader(path);
-			BufferedReader br = new BufferedReader(fr);
-			String line = br.readLine();
-			while (line != null) {
-				td = gson.fromJson(line, TrieuDai.class);
-				listTrieuDai.add(td);
-				line = br.readLine();
-			}
-			br.close();
-			fr.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return listTrieuDai;
-
-	}
 	public static List<LichSu> getTrieuDai() {
-	    TrieuDai td;
 	    Gson gson = new Gson();
 	    try {
-			String data = Files.readString(Path.of("data//trieudai.json"));
+			String data = Files.readString(Path.of(trieudai));
 			data = "[" + data.substring(0, data.length()-1) + "]";
 			Type collectionType = new TypeToken<List<TrieuDai>>(){}.getType();
 			List<LichSu> listTrieuDai = gson.fromJson(data, collectionType);	    
 		  	return listTrieuDai;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	  
+	}
+	public static List<LichSu> getVua() {
+	    Gson gson = new Gson();
+	    try {
+			String data = Files.readString(Path.of(vua));
+			data = "[" + data.substring(0, data.length()-1) + "]";
+			Type collectionType = new TypeToken<List<VuaVN>>(){}.getType();
+			List<LichSu> listVua = gson.fromJson(data, collectionType);	    
+		  	return listVua;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,6 +63,8 @@ public class LuuTru {
 		E check = list.get(0);
 		if (check instanceof TrieuDai)
 			path = trieudai;
+		if (check instanceof VuaVN)
+			path = vua;
 		try {
 			FileWriter fw = new FileWriter(path, false);
 			BufferedWriter bw = new BufferedWriter(fw);
