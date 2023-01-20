@@ -77,24 +77,27 @@ public class CrawlTD implements Crawl {
 					v.setThoiGian(listNam.get(i++));
 				}
 				
-				Gson gson = new Gson();
-//				String json = gson.toJson(listTrieuDai);
-//				System.out.println(json);
-				String json;
-				try {
-					FileWriter fw = new FileWriter(LuuTru.trieudai, false);
-					BufferedWriter bw = new BufferedWriter(fw);
-					for (TrieuDai v : listTrieuDai) {
-						json = gson.toJson(v);
-						bw.write(json);
-						bw.write('\n');
-					}
-					bw.close();
-					fw.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-					return false;
-				}
+//				Gson gson = new Gson();
+////				String json = gson.toJson(listTrieuDai);
+////				System.out.println(json);
+//				String json;
+//				try {
+//					FileWriter fw = new FileWriter(LuuTru.trieudai, false);
+//					BufferedWriter bw = new BufferedWriter(fw);
+//					json = gson.toJson(listTrieuDai);
+//					bw.write(json);
+////					for (TrieuDai v : listTrieuDai) {
+////						json = gson.toJson(v);
+////						bw.write(json);
+////						bw.write('\n');
+////					}
+//					bw.close();
+//					fw.close();
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//					return false;
+//				}
+				LuuTru.save(listTrieuDai);
 
 		return true;
 	}

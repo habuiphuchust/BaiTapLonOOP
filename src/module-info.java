@@ -9,6 +9,8 @@ module lsVN_nhom11 {
 	requires javafx.fxml;
 	requires javafx.graphics;
 	requires org.jsoup;
+	requires java.compiler;
+	requires java.xml;
 	opens model to com.google.gson;
 	opens view to javafx.fxml;
 

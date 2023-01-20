@@ -32,7 +32,7 @@ public class SampleController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-	    oList = FXCollections.observableList(LuuTru.getData(LuuTru.trieudai));
+	    oList = FXCollections.observableList(LuuTru.getTrieuDai());
 	    filterData = new FilteredList<>(oList, s -> true);
 		hienthi.setItems(filterData);
 		textfield.textProperty().addListener(obs -> {
