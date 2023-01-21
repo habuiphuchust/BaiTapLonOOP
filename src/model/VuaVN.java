@@ -35,9 +35,9 @@ public class VuaVN implements LichSu {
 	@Override
 	public String chiTiet() {
 		// TODO Auto-generated method stub
-		return "tên: " + ten +
-				"\nNăm cai trị: " + namTriVi +
-				"\nThông tin thêm: " + khac;
+		return "+ Tên: " + ten +
+				"\n+ Năm cai trị: " + namTriVi +
+				"\n+ Thông tin thêm: " + khac;
 	}
 
 }
