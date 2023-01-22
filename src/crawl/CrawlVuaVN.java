@@ -14,26 +14,28 @@ import model.VuaVN;
 
 public class CrawlVuaVN implements Crawl{
 	
-	public static String tachTen (String s) {
+	public String tachTen (String s) {
 		return s.replaceFirst("\\(.*\\)", "").trim();
 	}
-	public static String tachNam (String s) {
+	public String tachNam (String s) {
 		int i = s.indexOf('(');
 		if (i == -1) return "";
 		return s.substring(i);
 	}
-	
-	public static void main (String[] args) {
+
+	@Override
+	public boolean crawl() {
+		// TODO Auto-generated method stub
 		List<VuaVN> dsVua = new ArrayList<>();
 		Document doc = null;
 		Elements eles = null;
-		Element ele = null;
 		try {
 			doc = Jsoup.connect("https://sites.google.com/site/vietnamvanhoavaconnguoi/lich-su-va-cac-nhan-vat-lich-su-tieu-bieu?fbclid=IwAR3rBPavBYFJlzBxogRkSEyQi54w-N79w1HnfRyP3yTc51Nloc6fsMVLrDs").get();;
 			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+			return false;
 		}
 		eles = doc.getElementsByTag("font");
 		for (Element e : eles) {
@@ -54,12 +56,7 @@ public class CrawlVuaVN implements Crawl{
 		dsVua.remove(0);
 		dsVua.remove(0);	
 		LuuTru.save(dsVua);
-	}
-
-	@Override
-	public boolean crawl() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }
