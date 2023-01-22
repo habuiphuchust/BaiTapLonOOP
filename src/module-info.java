@@ -11,6 +11,7 @@ module lsVN_nhom11 {
 	requires org.jsoup;
 	requires java.compiler;
 	requires java.xml;
+	requires javafx.web;
 	opens model to com.google.gson;
 	opens view to javafx.fxml;
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
@@ -12,11 +13,7 @@
    <children>
       <ListView fx:id="hienthi" layoutX="79.0" layoutY="181.0" onMouseClicked="#clickList" prefHeight="427.0" prefWidth="158.0" />
       <TextField fx:id="textfield" layoutX="79.0" layoutY="127.0" />
-      <TextArea fx:id="textarea" layoutX="331.0" layoutY="181.0" prefHeight="427.0" prefWidth="676.0">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextArea>
       <ChoiceBox fx:id="choicebox" layoutX="83.0" layoutY="96.0" prefWidth="150.0" />
+      <WebView fx:id="webview" layoutX="375.0" layoutY="181.0" prefHeight="427.0" prefWidth="585.0" />
    </children>
 </Pane>

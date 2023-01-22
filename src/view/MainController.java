@@ -8,6 +8,8 @@ import model.LichSu;
 import model.LuuTru;
 import model.TrieuDai;
 import model.VuaVN;
+import utility.LowerCaseReplace;
+import utility.Search;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
@@ -20,6 +22,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.web.WebView;
 
 public class MainController implements Initializable{
 	@FXML
@@ -30,6 +33,8 @@ public class MainController implements Initializable{
 	private TextField textfield;
 	@FXML 
 	private ChoiceBox<String> choicebox;
+	@FXML 
+	private WebView webview;
 	
 	private ObservableList<LichSu> oList;
 	FilteredList<LichSu> filterData = null;
@@ -76,12 +81,21 @@ public class MainController implements Initializable{
 		
 		
 	}
+	//hien thi len webview
 	public void clickList (MouseEvent e) {
 		LichSu td = hienthi.getSelectionModel().getSelectedItem();
-		String text = td.chiTiet();
-		text = text.replaceAll("(.{1,73})\\s+", "$1\n");
-
-		textarea.setText(text);
+		if (td != null) {
+			String text = td.chiTiet();
+			//tu dong xuong dong
+			text = text.replaceAll("(.{1,80})\\s+", "$1<br>");
+			String tk = textfield.getText().trim();
+			//to mau tim kiem
+			if (!tk.isEmpty()) 
+				text = Search.search(text, tk, "yellow");
+			
+			webview.getEngine().loadContent(text);
+		}
+		
 	}
 
 }
