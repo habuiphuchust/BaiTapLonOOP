@@ -11,7 +11,7 @@ import model.VuaVN;
 
 public class TaoLienKet {
 
-	public static void main(String[] args) {
+	public static void vua_trieudai() {
 		// TODO Auto-generated method stub
 		List<LichSu> lsTrieuDai = LayDuLieu.getTrieuDai();
 		List<LichSu> lsVua = LayDuLieu.getVua();
@@ -29,9 +29,6 @@ public class TaoLienKet {
 				if (i == lsTrieuDai.size())
 					lsvuavn.add(vuavn);
 			}
-		}
-		for (VuaVN vua : lsvuavn) {
-			System.out.println(vua.chiTiet() + "\n");
 		}
 		LuuTru.save(lsvuavn);
 

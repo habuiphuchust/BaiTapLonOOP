@@ -51,6 +51,7 @@ public class StartController implements Initializable {
 		st.setScene(scene);
 		st.show();
 	}
+	//button start
 	public void clickedStart(ActionEvent e) {
 		Start.setDisable(true);
 		Cancel.setDisable(false);
@@ -73,6 +74,7 @@ public class StartController implements Initializable {
 		new Thread(task).start();
 
 	}
+	//button cancel
 	public void clickedCancel (ActionEvent e) {
 		Start.setDisable(false);
 		Cancel.setDisable(true);

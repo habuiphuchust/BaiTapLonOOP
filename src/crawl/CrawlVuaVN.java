@@ -61,7 +61,7 @@ public class CrawlVuaVN implements Crawl{
 		return true;
 	}
 	@Override
-	public String information() {
+	public String toString() {
 		// TODO Auto-generated method stub
 		return "class CrawlVuaVN: ";
 	}

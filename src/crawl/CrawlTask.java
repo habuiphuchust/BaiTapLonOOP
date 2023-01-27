@@ -15,18 +15,23 @@ public class CrawlTask extends Task<Void> {
 		listCrawl.add(new CrawlVuaVN());
 		listCrawl.add(new CrawlLeHoi());
 		
+		int solienket = 1;
+		int sonhiemvu = listCrawl.size() + solienket;
 		for (int i = 0; i <listCrawl.size(); i++) {
 			if (listCrawl.get(i).crawl()) {
-				this.updateMessage(listCrawl.get(i).information() + "thành công \n");
-				System.out.println(listCrawl.get(i).information() + "thành công \n");
+				this.updateMessage(listCrawl.get(i).toString() + "thành công \n");
+				System.out.println(listCrawl.get(i).toString() + "thành công \n");
 			} else {
-				this.updateMessage(listCrawl.get(i).information() + "thất bại \n");
-				System.out.println(listCrawl.get(i).information() + "thất bại \n");
+				this.updateMessage(listCrawl.get(i).toString() + "thất bại \n");
+				System.out.println(listCrawl.get(i).toString() + "thất bại \n");
 			}
-			this.updateProgress(i + 1, listCrawl.size() );
-			Thread.sleep(2000);
+			this.updateProgress(i + 1, sonhiemvu );
+			Thread.sleep(1000);
 
 		}
+		//tao lien ket
+		TaoLienKet.vua_trieudai();
+		this.updateProgress(sonhiemvu, sonhiemvu);
 		
 		return null;
 	}

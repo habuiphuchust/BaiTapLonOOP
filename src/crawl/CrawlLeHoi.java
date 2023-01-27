@@ -62,7 +62,7 @@ public class CrawlLeHoi implements Crawl {
 	}
 
 	@Override
-	public String information() {
+	public String toString() {
 		// TODO Auto-generated method stub
 		return "class CrawlLeHoi: ";
 	}
