@@ -1,8 +1,5 @@
 package crawl;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,12 +9,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.google.gson.Gson;
-
 import model.LuuTru;
 import model.TrieuDai;
 
 public class CrawlTD implements Crawl {
+	private String link;
 	//loai bo cap []
 	public String locSup (String s) {
 		int star, end;
@@ -34,8 +30,9 @@ public class CrawlTD implements Crawl {
 				List <TrieuDai> listTrieuDai = new ArrayList<>();
 				TrieuDai td;
 				Document doc;
+				link = "https://vi.wikipedia.org/wiki/Vua_Vi%E1%BB%87t_Nam";
 				try {
-				doc = Jsoup.connect("https://vi.wikipedia.org/wiki/Vua_Vi%E1%BB%87t_Nam").get();
+				doc = Jsoup.connect(link).get();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -85,6 +82,12 @@ public class CrawlTD implements Crawl {
 				LuuTru.save(listTrieuDai);
 
 		return true;
+	}
+
+	@Override
+	public String information() {
+		// TODO Auto-generated method stub
+		return "class CrawlTD: ";
 	}
 
 }

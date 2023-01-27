@@ -1,13 +1,10 @@
-package view;
+package controller;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import crawl.Crawl;
-import crawl.CrawlTD;
 import crawl.CrawlTask;
-import crawl.CrawlVuaVN;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -47,9 +44,9 @@ public class StartController implements Initializable {
 		
 	}
 	public void clickedBD(ActionEvent e) throws IOException {
-		Parent home = (Parent)FXMLLoader.load(getClass().getResource("Main.fxml"));
+		Parent home = (Parent)FXMLLoader.load(getClass().getResource("/view/Main.fxml"));
 		Scene scene = new Scene(home,1080,700);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 		Stage st = (Stage)batdau.getScene().getWindow();
 		st.setScene(scene);
 		st.show();

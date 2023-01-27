@@ -13,6 +13,7 @@ import model.LuuTru;
 import model.VuaVN;
 
 public class CrawlVuaVN implements Crawl{
+	private String link;
 	
 	public String tachTen (String s) {
 		return s.replaceFirst("\\(.*\\)", "").trim();
@@ -29,8 +30,9 @@ public class CrawlVuaVN implements Crawl{
 		List<VuaVN> dsVua = new ArrayList<>();
 		Document doc = null;
 		Elements eles = null;
+		link = "https://sites.google.com/site/vietnamvanhoavaconnguoi/lich-su-va-cac-nhan-vat-lich-su-tieu-bieu?fbclid=IwAR3rBPavBYFJlzBxogRkSEyQi54w-N79w1HnfRyP3yTc51Nloc6fsMVLrDs";
 		try {
-			doc = Jsoup.connect("https://sites.google.com/site/vietnamvanhoavaconnguoi/lich-su-va-cac-nhan-vat-lich-su-tieu-bieu?fbclid=IwAR3rBPavBYFJlzBxogRkSEyQi54w-N79w1HnfRyP3yTc51Nloc6fsMVLrDs").get();;
+			doc = Jsoup.connect(link).get();;
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -57,6 +59,11 @@ public class CrawlVuaVN implements Crawl{
 		dsVua.remove(0);	
 		LuuTru.save(dsVua);
 		return true;
+	}
+	@Override
+	public String information() {
+		// TODO Auto-generated method stub
+		return "class CrawlVuaVN: ";
 	}
 
 }

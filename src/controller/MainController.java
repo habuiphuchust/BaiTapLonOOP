@@ -1,15 +1,15 @@
-package view;
+package controller;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
+import model.LayDuLieu;
+import model.LeHoi;
 import model.LichSu;
-import model.LuuTru;
 import model.TrieuDai;
 import model.VuaVN;
-import utility.LowerCaseReplace;
 import utility.Search;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
@@ -47,22 +47,21 @@ public class MainController implements Initializable{
 	
 	private ObservableList<LichSu> oList;
 	FilteredList<LichSu> filterData = null;
-	//khoi tao bo tim kiem
-	String all = "Tất cả", td = "Triều Đại", vua = "Vua";
+	//khoi tao item choicebox
+	String all = "Tất cả", td = "Triều Đại", vua = "Vua", lehoi = "Lễ Hội";
 	
 	private Predicate<LichSu> listView;
-	private Predicate<LichSu> trieudai;
-	private Predicate<LichSu> vu;
+	private Predicate<LichSu> trieudai, vu, leho;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// khoi tao bo loc
 		trieudai = s -> (s instanceof TrieuDai);
 		vu = s -> (s instanceof VuaVN);
+		leho = s -> (s instanceof LeHoi);
 		
-		//tao loc
-		InvalidationListener chon = new InvalidationListener() {
-			
+		//tao xu ly su kien tim kiem choicebox + textfield
+		InvalidationListener chon = new InvalidationListener() {		
 			@Override
 			public void invalidated(Observable arg0) {
 				// TODO Auto-generated method stub
@@ -71,19 +70,25 @@ public class MainController implements Initializable{
 				filterData.setPredicate(listView);
 				if (text == vua)
 					filterData.setPredicate(listView.and(vu));
-				if (text == td)
+				else if (text == td)
 					filterData.setPredicate(listView.and(trieudai));
+				else if (text == lehoi)
+					filterData.setPredicate(listView.and(leho));
 			}
 		};
-		// khoi tao listview
-	    oList = FXCollections.observableList(LuuTru.getTrieuDai());
-	    oList.addAll(LuuTru.getVua());
+		// khoi tao listview va them du lieu
+		//them du lieu
+	    oList = FXCollections.observableList(LayDuLieu.getTrieuDai());
+	    oList.addAll(LayDuLieu.getVua());
+	    oList.addAll(LayDuLieu.getLeHoi());
+	    
+	    //tao listview
 	    filterData = new FilteredList<>(oList, s -> true);
 		hienthi.setItems(filterData);
 		textfield.textProperty().addListener(chon);
 				
 		// khoi tao choicebox
-		ObservableList<String> itemChoicebox = 		FXCollections.observableArrayList(all, td, vua);
+		ObservableList<String> itemChoicebox = FXCollections.observableArrayList(all, td, vua, lehoi);
 		choicebox.setItems(itemChoicebox);
 		choicebox.getSelectionModel().selectFirst();
 		choicebox.getSelectionModel().selectedItemProperty().addListener(chon);
@@ -107,7 +112,7 @@ public class MainController implements Initializable{
 		
 	}
 	public void clickedBack (ActionEvent e) throws IOException {
-		Parent home = (Parent)FXMLLoader.load(getClass().getResource("start.fxml"));
+		Parent home = (Parent)FXMLLoader.load(getClass().getResource("/view/start.fxml"));
 		Scene scene = new Scene(home,1080,700);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		Stage st = (Stage)back.getScene().getWindow();

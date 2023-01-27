@@ -1,5 +1,6 @@
-package view;
+package controller;
 	
+import java.net.URL;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
@@ -11,9 +12,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = (Parent)FXMLLoader.load(getClass().getResource("start.fxml"));
+			Parent root = (Parent)FXMLLoader.load(getClass().getResource("/view/start.fxml"));
 			Scene scene = new Scene(root,1080,700);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
 			primaryStage.show();

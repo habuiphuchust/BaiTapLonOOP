@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane prefHeight="700.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.StartController">
+<Pane prefHeight="700.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StartController">
    <children>
       <Button fx:id="Start" contentDisplay="TOP" layoutX="573.0" layoutY="581.0" mnemonicParsing="false" onAction="#clickedStart" text="Start">
          <effect>
