@@ -14,7 +14,6 @@ module lsVN_nhom11 {
 	requires java.xml;
 	requires javafx.web;
 	opens model to com.google.gson;
-	opens view to javafx.fxml;
 	opens controller to javafx.fxml, javafx.graphics;
 
 }

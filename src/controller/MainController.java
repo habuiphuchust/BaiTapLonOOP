@@ -101,7 +101,8 @@ public class MainController implements Initializable{
 		if (td != null) {
 			String text = td.chiTiet();
 			//tu dong xuong dong
-			text = text.replaceAll("(.{1,80})\\s+", "$1<br>");
+//			text = text.replaceAll("(.{1,80})\\s+", "$1<br>");
+			text = text.replaceAll("\n", "<br>");
 			String tk = textfield.getText().trim();
 			//to mau tim kiem
 			if (!tk.isEmpty()) 

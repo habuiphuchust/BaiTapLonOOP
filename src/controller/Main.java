@@ -1,6 +1,5 @@
 package controller;
 	
-import java.net.URL;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
