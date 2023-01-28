@@ -8,12 +8,12 @@ import com.google.gson.Gson;
 
 
 public class LuuTru {
-	public static String nhanvat = "data//nhanvat.json";
-	public static String trieudai = "data//trieudai.json";
-	public static String sukien = "data//sukien.json";
-	public static String ditich = "data//ditich.json";
-	public static String lehoi = "data//lehoi.json";
-	public static String vua = "data//vua.json";
+	final public static String nhanvat = "data//nhanvat.json";
+	final public static String trieudai = "data//trieudai.json";
+	final public static String sukien = "data//sukien.json";
+	final public static String ditich = "data//ditich.json";
+	final public static String lehoi = "data//lehoi.json";
+	final public static String vua = "data//vua.json";
 	
 	public static <E> void save(List<E> list) {
 		Gson gson = new Gson();

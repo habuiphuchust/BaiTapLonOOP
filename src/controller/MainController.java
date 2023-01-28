@@ -25,7 +25,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebView;
@@ -34,8 +33,6 @@ import javafx.stage.Stage;
 public class MainController implements Initializable{
 	@FXML
 	private ListView<LichSu> hienthi;
-	@FXML
-	private TextArea textarea;
 	@FXML
 	private TextField textfield;
 	@FXML 
@@ -49,7 +46,7 @@ public class MainController implements Initializable{
 	FilteredList<LichSu> filterData = null;
 	//khoi tao item choicebox
 	String all = "Tất cả", td = "Triều Đại", vua = "Vua", lehoi = "Lễ Hội";
-	
+	//bo loc
 	private Predicate<LichSu> listView;
 	private Predicate<LichSu> trieudai, vu, leho;
 	
@@ -115,7 +112,7 @@ public class MainController implements Initializable{
 	public void clickedBack (ActionEvent e) throws IOException {
 		Parent home = (Parent)FXMLLoader.load(getClass().getResource("/view/start.fxml"));
 		Scene scene = new Scene(home,1080,700);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 		Stage st = (Stage)back.getScene().getWindow();
 //		st.hide();
 		st.setScene(scene);
