@@ -14,6 +14,9 @@ public class CrawlTask extends Task<Void> {
 		listCrawl.add(new CrawlTD());
 		listCrawl.add(new CrawlVuaVN());
 		listCrawl.add(new CrawlLeHoi());
+		listCrawl.add(new CrawlSK());
+		listCrawl.add(new CrawlLeHoi2());
+		listCrawl.add(new CrawlDiTich());
 		
 		int solienket = 1;
 		int sonhiemvu = listCrawl.size() + solienket;
@@ -26,7 +29,7 @@ public class CrawlTask extends Task<Void> {
 				System.out.println(listCrawl.get(i).toString() + "thất bại \n");
 			}
 			this.updateProgress(i + 1, sonhiemvu );
-			Thread.sleep(1000);
+			Thread.sleep(500);
 
 		}
 		//tao lien ket

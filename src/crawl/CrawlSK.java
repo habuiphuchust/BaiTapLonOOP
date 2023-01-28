@@ -11,9 +11,9 @@ import org.jsoup.select.Elements;
 import model.LuuTru;
 import model.SuKien;
 
-public class CrawlSK {
-
-	public static void main(String[] args) {
+public class CrawlSK implements Crawl {
+	@Override
+	public boolean crawl() {
 		// TODO Auto-generated method stub
 		List <SuKien> listSuKien = new ArrayList<>();
 		SuKien sk; 
@@ -22,6 +22,7 @@ public class CrawlSK {
 			doc = Jsoup.connect("https://vi.wikipedia.org/wiki/Ni%C3%AAn_bi%E1%BB%83u_l%E1%BB%8Bch_s%E1%BB%AD_Vi%E1%BB%87t_Nam").get();
 		} catch (Exception e1) {
 			e1.printStackTrace();
+			return false;
 		}
 			
 			
@@ -81,6 +82,10 @@ public class CrawlSK {
 			listSuKien.add(sk);	
 		}
 		LuuTru.save(listSuKien, false);
-
+		return true;
+	}
+	@Override
+	public String toString() {
+		return "class CrawlSK: ";
 	}
 }

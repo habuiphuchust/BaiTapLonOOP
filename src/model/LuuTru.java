@@ -31,6 +31,8 @@ public class LuuTru {
 			path = lehoi;
 		else if (check instanceof SuKien)
 			path = sukien;
+		else if (check instanceof DiTich)
+			path = ditich;
 		
 		try {
 			FileWriter fw = new FileWriter(path, oldData);

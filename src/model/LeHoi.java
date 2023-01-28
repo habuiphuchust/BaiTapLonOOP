@@ -1,7 +1,7 @@
 package model;
 
 public class LeHoi implements LichSu {
-	private String ten, thongtin;
+	private String ten, thongtin, loaihinh, diadiem;
 
 	public String getTen() {
 		return ten;
@@ -18,6 +18,23 @@ public class LeHoi implements LichSu {
 	public void setThongtin(String thongtin) {
 		this.thongtin = thongtin;
 	}
+	
+	public String getLoaihinh() {
+		return loaihinh;
+	}
+
+	public void setLoaihinh(String loaihinh) {
+		this.loaihinh = loaihinh;
+	}
+
+	public String getDiadiem() {
+		return diadiem;
+	}
+
+	public void setDiadiem(String diadiem) {
+		this.diadiem = diadiem;
+	}
+
 	@Override
 	public String toString() {
 		return ten;
@@ -26,7 +43,10 @@ public class LeHoi implements LichSu {
 	@Override
 	public String chiTiet() {
 		// TODO Auto-generated method stub
-		return thongtin;
+		return ten + "\n" + 
+				"Loại Hình: " + loaihinh + "\n" +
+				"Địa Điểm: " + diadiem + "\n" +
+				"Thông tin thêm: " + thongtin;
 	}
 
 }
