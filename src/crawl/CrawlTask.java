@@ -16,7 +16,7 @@ public class CrawlTask extends Task<Void> {
 		listCrawl.add(new CrawlLeHoi());
 		listCrawl.add(new CrawlSK());
 		listCrawl.add(new CrawlLeHoi2());
-		listCrawl.add(new CrawlDiTich());
+//		listCrawl.add(new CrawlDiTich());
 		
 		int solienket = 1;
 		int sonhiemvu = listCrawl.size() + solienket;

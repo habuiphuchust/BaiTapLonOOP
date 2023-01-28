@@ -1,8 +1,15 @@
 package model;
 
 public class VuaVN implements LichSu {
-	String ten, namTriVi, khac;
+	String ten, namTriVi, khac, thethu;
 	TrieuDai trieuDai;
+	
+	public String getThethu() {
+		return thethu;
+	}
+	public void setThethu(String thethu) {
+		this.thethu = thethu;
+	}
 	public TrieuDai getTrieuDai() {
 		return trieuDai;
 	}
@@ -38,6 +45,7 @@ public class VuaVN implements LichSu {
 		String chitiet;
 		chitiet = "+ Tên: " + ten +
 				"\n+ Năm cai trị: " + namTriVi +
+				"\n+ Thế thứ: " + thethu +
 				"\n+ Thông tin thêm: " + khac +
 				"\n+ Triều Đại liên quan: ";
 		if (trieuDai != null) 
