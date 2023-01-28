@@ -22,12 +22,16 @@ public class LuuTru {
 		json = json.substring(1, json.length()-1) + ",";
 		String path = null;
 		E check = list.get(0);
+		//kiem tra list thuoc loai nao
 		if (check instanceof TrieuDai)
 			path = trieudai;
 		else if (check instanceof VuaVN)
 			path = vua;
 		else if (check instanceof LeHoi)
 			path = lehoi;
+		else if (check instanceof SuKien)
+			path = sukien;
+		
 		try {
 			FileWriter fw = new FileWriter(path, oldData);
 			BufferedWriter bw = new BufferedWriter(fw);

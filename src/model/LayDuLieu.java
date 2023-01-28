@@ -57,5 +57,20 @@ public class LayDuLieu {
 		}
 	  
 	}
+	public static List<LichSu> getSuKien() {
+	    Gson gson = new Gson();
+	    try {
+			String data = Files.readString(Path.of(LuuTru.sukien));
+			data = "[" + data.substring(0, data.length()-1) + "]";
+			Type collectionType = new TypeToken<List<SuKien>>(){}.getType();
+			List<LichSu> listSuKien = gson.fromJson(data, collectionType);	    
+		  	return listSuKien;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	  
+	}
 
 }

@@ -8,6 +8,7 @@ import java.util.function.Predicate;
 import model.LayDuLieu;
 import model.LeHoi;
 import model.LichSu;
+import model.SuKien;
 import model.TrieuDai;
 import model.VuaVN;
 import utility.Search;
@@ -45,10 +46,10 @@ public class MainController implements Initializable{
 	private ObservableList<LichSu> oList;
 	FilteredList<LichSu> filterData = null;
 	//khoi tao item choicebox
-	String all = "Tất cả", td = "Triều Đại", vua = "Vua", lehoi = "Lễ Hội";
+	String all = "Tất cả", td = "Triều Đại", vua = "Vua", lehoi = "Lễ Hội", sukien = "Sự Kiện";
 	//bo loc
 	private Predicate<LichSu> listView;
-	private Predicate<LichSu> trieudai, vu, leho;
+	private Predicate<LichSu> trieudai, vu, leho, sk;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -56,6 +57,7 @@ public class MainController implements Initializable{
 		trieudai = s -> (s instanceof TrieuDai);
 		vu = s -> (s instanceof VuaVN);
 		leho = s -> (s instanceof LeHoi);
+		sk = s -> (s instanceof SuKien);
 		
 		//tao xu ly su kien tim kiem choicebox + textfield
 		InvalidationListener chon = new InvalidationListener() {		
@@ -71,6 +73,8 @@ public class MainController implements Initializable{
 					filterData.setPredicate(listView.and(trieudai));
 				else if (text == lehoi)
 					filterData.setPredicate(listView.and(leho));
+				else if (text == sukien)
+					filterData.setPredicate(listView.and(sk));
 			}
 		};
 		// khoi tao listview va them du lieu
@@ -78,6 +82,7 @@ public class MainController implements Initializable{
 	    oList = FXCollections.observableList(LayDuLieu.getTrieuDai());
 	    oList.addAll(LayDuLieu.getVua());
 	    oList.addAll(LayDuLieu.getLeHoi());
+	    oList.addAll(LayDuLieu.getSuKien());
 	    
 	    //tao listview
 	    filterData = new FilteredList<>(oList, s -> true);
@@ -85,7 +90,7 @@ public class MainController implements Initializable{
 		textfield.textProperty().addListener(chon);
 				
 		// khoi tao choicebox
-		ObservableList<String> itemChoicebox = FXCollections.observableArrayList(all, td, vua, lehoi);
+		ObservableList<String> itemChoicebox = FXCollections.observableArrayList(all, td, vua, lehoi, sukien);
 		choicebox.setItems(itemChoicebox);
 		choicebox.getSelectionModel().selectFirst();
 		choicebox.getSelectionModel().selectedItemProperty().addListener(chon);
