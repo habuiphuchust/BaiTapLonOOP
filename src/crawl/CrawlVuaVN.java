@@ -57,7 +57,7 @@ public class CrawlVuaVN implements Crawl{
 		dsVua.remove(0);
 		dsVua.remove(0);
 		dsVua.remove(0);	
-		LuuTru.save(dsVua);
+		LuuTru.save(dsVua, false);
 		return true;
 	}
 	@Override

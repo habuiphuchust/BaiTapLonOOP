@@ -57,7 +57,7 @@ public class CrawlLeHoi implements Crawl {
 				dslehoi.add(lehoi);
 		}
 
-		LuuTru.save(dslehoi);
+		LuuTru.save(dslehoi, false);
 		return true;
 	}
 

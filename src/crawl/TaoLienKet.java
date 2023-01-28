@@ -30,7 +30,7 @@ public class TaoLienKet {
 					lsvuavn.add(vuavn);
 			}
 		}
-		LuuTru.save(lsvuavn);
+		LuuTru.save(lsvuavn, false);
 
 	}
 

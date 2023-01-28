@@ -15,7 +15,7 @@ public class LuuTru {
 	final public static String lehoi = "data//lehoi.json";
 	final public static String vua = "data//vua.json";
 	
-	public static <E> void save(List<E> list) {
+	public static <E> void save(List<E> list, boolean oldData) {
 		Gson gson = new Gson();
 		String json;
 		json = gson.toJson(list);
@@ -29,7 +29,7 @@ public class LuuTru {
 		else if (check instanceof LeHoi)
 			path = lehoi;
 		try {
-			FileWriter fw = new FileWriter(path, false);
+			FileWriter fw = new FileWriter(path, oldData);
 			BufferedWriter bw = new BufferedWriter(fw);
 			
 			bw.write(json);

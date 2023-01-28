@@ -79,7 +79,7 @@ public class CrawlTD implements Crawl {
 				for (TrieuDai v : listTrieuDai) {
 					v.setThoiGian(listNam.get(i++));
 				}
-				LuuTru.save(listTrieuDai);
+				LuuTru.save(listTrieuDai, false);
 
 		return true;
 	}
