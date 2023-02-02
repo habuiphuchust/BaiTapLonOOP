@@ -1,8 +1,5 @@
 package crawl;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,24 +9,30 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.google.gson.Gson;
-
 import model.LuuTru;
 import model.TrieuDai;
 
 public class CrawlTD implements Crawl {
+	private String link;
+	//loai bo cap []
+	public String locSup (String s) {
+		int star, end;
+		while (s.indexOf('[') != -1) {
+			star = s.indexOf('[');
+			end = s.indexOf(']');
+			s = s.substring(0, star) + s.substring(end+1);
+		}
+		return s;
+	}
 
 	@Override
 	public boolean crawl() {
-		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
 				List <TrieuDai> listTrieuDai = new ArrayList<>();
 				TrieuDai td;
-//				File f = new File("data//vuavietnam.html");
 				Document doc;
+				link = "https://vi.wikipedia.org/wiki/Vua_Vi%E1%BB%87t_Nam";
 				try {
-//					doc = Jsoup.parse(f, "UTF-8");
-				doc = Jsoup.connect("https://vi.wikipedia.org/wiki/Vua_Vi%E1%BB%87t_Nam").get();
+				doc = Jsoup.connect(link).get();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -42,10 +45,10 @@ public class CrawlTD implements Crawl {
 				for (Element row : rows) {
 					td = new TrieuDai();
 					Elements colums = row.getElementsByTag("td");   // từng cột trong dòng
-					td.setTen(LocString.locSup(colums.get(0).text()));
-					td.setNguoiSangLap(LocString.locSup(colums.get(1).text()));
-					td.setQueHuong(LocString.locSup(colums.get(2).text()));
-					td.setKinhDo(LocString.locSup(colums.get(3).text()));
+					td.setTen(locSup(colums.get(0).text()));
+					td.setNguoiSangLap(locSup(colums.get(1).text()));
+					td.setQueHuong(locSup(colums.get(2).text()));
+					td.setKinhDo(locSup(colums.get(3).text()));
 					listTrieuDai.add(td);
 							
 					
@@ -76,27 +79,15 @@ public class CrawlTD implements Crawl {
 				for (TrieuDai v : listTrieuDai) {
 					v.setThoiGian(listNam.get(i++));
 				}
-				
-				Gson gson = new Gson();
-//				String json = gson.toJson(listTrieuDai);
-//				System.out.println(json);
-				String json;
-				try {
-					FileWriter fw = new FileWriter(LuuTru.trieudai, false);
-					BufferedWriter bw = new BufferedWriter(fw);
-					for (TrieuDai v : listTrieuDai) {
-						json = gson.toJson(v);
-						bw.write(json);
-						bw.write('\n');
-					}
-					bw.close();
-					fw.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-					return false;
-				}
+				LuuTru.save(listTrieuDai, false);
 
 		return true;
+	}
+
+	@Override
+	public String toString () {
+		// TODO Auto-generated method stub
+		return "class CrawlTD: ";
 	}
 
 }

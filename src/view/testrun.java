@@ -1,19 +1,11 @@
 package view;
 
-import com.google.gson.Gson;
-
-import model.TrieuDai;
-
-import crawl.Crawl;
-import crawl.CrawlTD;
+import utility.LowerCaseReplace;
 
 public class testrun {
 	public static void main (String[] args) {
-		Crawl td = new CrawlTD();
-		if (!td.crawl())
-			System.out.println("that bai");
-
-		
+		String s, v = " toi Yeu Viet Nam";
+		s = LowerCaseReplace.replace(v, "yeu", "nam");
+		System.out.println(s);
 	}
-
 }

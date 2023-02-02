@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="700.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StartController">
+   <children>
+      <Button fx:id="Start" contentDisplay="TOP" layoutX="573.0" layoutY="581.0" mnemonicParsing="false" onAction="#clickedStart" text="Start">
+         <effect>
+            <Blend />
+         </effect>
+      </Button>
+      <Button fx:id="Cancel" layoutX="626.0" layoutY="581.0" mnemonicParsing="false" onAction="#clickedCancel" text="Cancel" />
+      <ProgressBar fx:id="pbar" layoutX="395.0" layoutY="628.0" prefHeight="23.0" prefWidth="335.0" progress="0.0" />
+      <Text fill="#eb0e0e" layoutX="383.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lịch Sử Việt Nam">
+         <font>
+            <Font name="Algerian" size="46.0" />
+         </font>
+      </Text>
+      <Text layoutX="444.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="“Dân ta phải biết sử ta" wrappingWidth="245.69775390625">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="358.0" layoutY="449.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cho tường góc tích nước nhà Việt Nam”">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="675.0" layoutY="493.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hồ Chí Minh">
+         <font>
+            <Font name="System Italic" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="394.0" layoutY="602.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cập nhật lại dữ liệu ?" />
+      <Button fx:id="batdau" layoutX="449.0" layoutY="236.0" mnemonicParsing="false" onAction="#clickedBD" prefHeight="80.0" prefWidth="226.0" text="Bắt Đầu" textOverrun="WORD_ELLIPSIS">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Button>
+      <Label fx:id="lb1" layoutX="472.0" layoutY="658.0" />
+      <ProgressIndicator fx:id="pIndicator" layoutX="741.0" layoutY="582.0" prefHeight="61.0" prefWidth="64.0" progress="0.0" />
+   </children>
+</Pane>
